@@ -26,7 +26,7 @@ GEE script used: [`HM_data_collection.js`](HM_data_collection.js)
 - Reclassification rule combining slope and p-value thresholds (see Supplementary Table S1).
 
 Analysis pipeline provided in:  
-[`trend_analysis/ndvi_trend_analysis.py`](../trend_analysis/ndvi_trend_analysis.py)
+[`ndvi_trend_analysis`](NDVI trend_analysis)
 
 ---
 
