@@ -1,0 +1,47 @@
+Description:
+This script computes NDVI trend classification based on pre-calculated 
+Sen's Slope and Mann-Kendall p-value rasters using ArcPy.
+"""
+
+import arcpy
+import os
+
+# ------------ USER INPUT ------------
+workspace = r"your\path\to\ndvi\trend_analysis"
+arcpy.env.workspace = workspace
+arcpy.env.overwriteOutput = True
+
+slope_raster = os.path.join(workspace, "slope.tif")
+pval_raster = os.path.join(workspace, "p_value.tif")
+output_class = os.path.join(workspace, "ndvi_trend_class.tif")
+
+# ------------ BUILD TREND CLASSIFICATION ------------
+# Reclassification logic:
+# 1 - Significant degradation
+# 2 - Moderate degradation
+# 3 - Degradation
+# 4 - Stable
+# 5 - Increase
+# 6 - Moderate increase
+# 7 - Significant increase
+
+expression = """
+Con("{s}" <= 0.0005, 
+    Con("{p}" <= 0.05, 1,
+        Con("{p}" <= 0.1, 2, 3)),
+    Con("{s}" <= 0.002, 4,
+        Con("{p}" > 0.1, 5,
+            Con("{p}" > 0.05, 6, 7))))
+""".format(s=slope_raster, p=pval_raster)
+
+out_class = arcpy.sa.Con(arcpy.Raster(slope_raster) <= 0.0005,
+                arcpy.sa.Con(arcpy.Raster(pval_raster) <= 0.05, 1,
+                arcpy.sa.Con(arcpy.Raster(pval_raster) <= 0.1, 2, 3)),
+                arcpy.sa.Con(arcpy.Raster(slope_raster) <= 0.002, 4,
+                arcpy.sa.Con(arcpy.Raster(pval_raster) > 0.1, 5,
+                arcpy.sa.Con(arcpy.Raster(pval_raster) > 0.05, 6, 7))))
+
+out_class.save(output_class)
+
+print("NDVI trend classification completed:")
+print(f"→ Saved to: {output_class}")
