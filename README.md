@@ -1,6 +1,6 @@
 # Mountain Grassland NDVI and Climate Analysis
 
-This repository contains the complete workflow and codebase for the study **"Monitoring Mountain Grassland Vegetation Dynamics under Climate and Human Pressure"**, submitted to *Earth's Future*. It includes GEE data extraction, NDVI trend analysis, climate correlation, human pressure mapping, and machine learning-based prediction of future vegetation dynamics.
+This repository contains the complete workflow and codebase for the study **"Impacts of climate change and human activities on global mountain grasslands: insights into the last two decades and future climate scenarios"**, submitted to *Earth's Future*. It includes GEE data extraction, NDVI trend analysis, climate correlation, human pressure mapping, and machine learning-based prediction of future vegetation dynamics.
 
 ---
 
