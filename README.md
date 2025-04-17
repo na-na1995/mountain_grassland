@@ -25,9 +25,8 @@ mountain-grassland/
 ├── future_projection/
 │   ├── kde_ks_analysis.py                # KDE and KS test of LAI scenarios
 │   └── delta_lai_map.py                  # ΔLAI mapping between SSP scenarios
-├── regions/masks/
-│   ├── tibetan_plateau.shp              # Regional masks (shapefiles)
-│   ├── ...
+├── shapefile/
+│   ├── link                              # Google drive link (shapefiles for mountain grasslands)
 ├── sample_data/
 │   ├── train_sample.csv                  # Sample data for ML input
 │   └── lai_ssp_example.csv               # Future LAI predictions per region
