@@ -8,16 +8,32 @@ This repository contains the complete workflow and codebase for the study **"Mon
 
 ```
 mountain-grassland/
-├── data_preprocessing/       # GEE JS scripts, CMIP6 and gHM preprocessing
-├── trend_analysis/           # NDVI trends, Theil–Sen slope, MK test, and human impact
-├── climate_correlation/      # Spearman correlation analysis and heatmap generation
-├── ml_model/                 # RF, XGBoost, and LSTM model training and SHAP interpretation
-├── future_projection/        # KDE distribution, KS test, and LAI delta maps under SSPs
-├── regions/masks/            # Shapefiles or raster masks of mountain regions
-├── sample_data/              # Example CSV files (NDVI, climate, LAI)
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-└── run_all.py                # Optional runner script to chain workflows
+├── data_preprocessing/
+│   ├── gee_ndvi_climate_extraction.js    # GEE code for NDVI and climate extraction
+│   ├── cmip6_preprocess.py               # CMIP6 downscaling + harmonization
+│   ├── ghm_interpolation.py              # Interpolate gHM 5-year data into annual
+├── trend_analysis/
+│   ├── ndvi_trend_analysis.py            # Sen's slope + MK test
+│   ├── ghm_hotspot.py                    # Getis-Ord Gi* analysis
+│   └── impact_index.py                   # NDVI-gHM integration model
+├── climate_correlation/
+│   └── spearman_correlation.py           # Region-wise NDVI-climate heatmaps
+├── ml_model/
+│   ├── train_rf_xgb.py                   # Train and evaluate RF/XGBoost
+│   ├── shap_plot.py                      # SHAP value visualization
+│   └── lstm_model.py                     # LSTM training for NDVI sequences
+├── future_projection/
+│   ├── kde_ks_analysis.py                # KDE and KS test of LAI scenarios
+│   └── delta_lai_map.py                  # ΔLAI mapping between SSP scenarios
+├── regions/masks/
+│   ├── tibetan_plateau.shp              # Regional masks (shapefiles)
+│   ├── ...
+├── sample_data/
+│   ├── train_sample.csv                  # Sample data for ML input
+│   └── lai_ssp_example.csv               # Future LAI predictions per region
+├── README.md                             # This file
+├── requirements.txt                      # Python dependencies
+└── run_all.py                            # Sequential pipeline for end-to-end workflow
 ```
 
 ---
