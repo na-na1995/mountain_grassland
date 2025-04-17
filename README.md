@@ -87,7 +87,7 @@ python future_projection/kde_ks_analysis.py
 Once published, please cite this repository as:
 
 ```
-Author(s). (2025). Mountain Grassland NDVI and Climate Analysis (v1.0). Zenodo. https://doi.org/XXXX/zenodo.XXXXXXX
+Na, M., Zuecco, G., & Tarolli, P. (2025). Mountain Grassland NDVI and Climate Analysis (v1.0). Zenodo. https://doi.org/XXXX/zenodo.XXXXXXX
 ```
 
 ---
@@ -95,5 +95,6 @@ Author(s). (2025). Mountain Grassland NDVI and Climate Analysis (v1.0). Zenodo. 
 ## 📬 Contact
 
 For questions, please contact:  
-**[Your Name]** – [Your Institution]  
-📧 your.email@example.com
+**Mulun Na**  
+Department of Land, Environment, Agriculture and Forestry, University of Padova  
+📧 mulun.na@phd.unipd.it  
