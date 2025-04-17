@@ -15,7 +15,7 @@ This figure evaluates the interaction between human pressure (Global Human Modif
   - `3`: Sub-high (≤ 0.7)  
   - `4`: High (> 0.7)
 
-GEE script used: [`extract_ghm_grasslands.js`](../data_preprocessing/extract_ghm_grasslands.js)
+GEE script used: [`HM_data_collection.js`](data_preprocessing/HM_analysis/HM_data_collection.js)
 
 ---
 
