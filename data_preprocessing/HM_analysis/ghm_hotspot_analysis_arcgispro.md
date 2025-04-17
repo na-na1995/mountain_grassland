@@ -1,31 +1,46 @@
-**Figure 7: NDVI Trends under Human Modification Pressure**
+## **Figure 7: NDVI Trends under Human Modification Pressure**
+
 This figure evaluates the interaction between human pressure (Global Human Modification Index, gHM) and NDVI trends (2000–2021) across six major mountain regions.
 
-**1. gHM Data Extraction and Classification**
-Source: CSP/HM/GlobalHumanModification
+---
 
-Filtered for: MODIS grassland (LC_Type1 = 10) above 600m (GMTED2010 DEM)
+### **1. gHM Data Extraction and Classification**
 
-Classified into 5 pressure levels:
+- **Source**: [`CSP/HM/GlobalHumanModification`](https://developers.google.com/earth-engine/datasets/catalog/CSP_HM_GlobalHumanModification)
+- **Filtered for**: MODIS grassland (`LC_Type1 = 10`) above 600m (using GMTED2010 DEM)
+- **Classified into 5 pressure levels**:
+  - `0`: No Pressure (≤ 0.1)  
+  - `1`: Low (≤ 0.3)  
+  - `2`: Moderate (≤ 0.5)  
+  - `3`: Sub-high (≤ 0.7)  
+  - `4`: High (> 0.7)
 
-0: No Pressure (≤0.1)
+GEE script used: [`extract_ghm_grasslands.js`](../data_preprocessing/extract_ghm_grasslands.js)
 
-1: Low (≤0.3)
+---
 
-2: Moderate (≤0.5)
+### **2. NDVI Trend Classification (2000–2021)**
 
-3: Sub-high (≤0.7)
+- Based on annual maximum NDVI from MODIS MOD13A3.
+- Trend detection using Theil-Sen slope estimator and Mann-Kendall significance test.
+- Reclassification rule combining slope and p-value thresholds (see Supplementary Table S1).
 
-4: High (>0.7)
+Analysis pipeline provided in:  
+[`trend_analysis/ndvi_trend_analysis.py`](../trend_analysis/ndvi_trend_analysis.py)
 
-2. NDVI Trend Classification (2000–2021)
+---
 
-3. Hotspot Analysis (ArcGIS Pro)
-Tool: Spatial Statistics Tools → Mapping Clusters → Hot Spot Analysis (Getis-Ord Gi*)
+### **3. Hotspot Analysis (ArcGIS Pro)**
 
-Input: NDVI trend class raster and gHM class raster
+- **Tool**:  
+  *Spatial Statistics Tools → Mapping Clusters → Hot Spot Analysis (Getis-Ord Gi\*)*
+- **Input Layers**:
+  - NDVI trend classification raster  
+  - gHM class raster
+- **Purpose**: Identify spatial clusters where NDVI degradation coincides with intense human modification.
 
-Purpose: Identify spatial clusters of human pressure aligned with vegetation degradation.
+---
 
-Output
-Figure 7 maps the spatial overlap between gHM pressure and NDVI change categories, revealing regional contrasts in human-vegetation interaction intensity.
+### **4. Output**
+
+Figure 7 maps the spatial overlap between gHM pressure and NDVI trend categories, revealing regional contrasts in the intensity of human-vegetation interactions.
